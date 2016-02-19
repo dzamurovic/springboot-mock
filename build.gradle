@@ -1,0 +1,52 @@
+buildscript {
+    repositories { mavenCentral() }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+    }
+}
+
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+
+group = 'rs.ezamur'
+version = '0.0.1'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+project.war.baseName = 'springboot-mock'
+
+repositories { mavenCentral() }
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-data-rest:$springBootVersion"
+    compile "org.postgresql:postgresql:9.3-1100-jdbc4"
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+    testCompile "junit:junit:4.11"
+    testCompile "org.hsqldb:hsqldb:2.3.1"
+    testCompile "org.mockito:mockito-all:1.9.5"
+}
+
+war {
+    manifest {
+        attributes 'Version': version
+    }
+}
+group 'rs.ezamur'
+version '0.0.1-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
