@@ -1,0 +1,21 @@
+<div class="panel panel-default normal-form">
+    <div class="panel-heading">
+        <b>Company list</b>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">City</th>
+            <th class="text-center">Country</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        <tr ng-repeat="company in companies">
+            <td ng-click="getCompanyDetails(company.companyId)"><a href="" ng-bind="company.name"></a></td>
+            <td id="city" ng-bind="company.city"></td>
+            <td id="country" ng-bind="company.country"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

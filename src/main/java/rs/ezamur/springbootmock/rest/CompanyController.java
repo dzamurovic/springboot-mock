@@ -9,7 +9,7 @@ import rs.ezamur.springbootmock.service.CompanyService;
 import java.util.List;
 
 @Controller
-@RequestMapping("companies")
+@RequestMapping("rest/companies")
 public class CompanyController {
 
     @Autowired

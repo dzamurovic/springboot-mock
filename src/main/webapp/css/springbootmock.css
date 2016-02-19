@@ -1,0 +1,11 @@
+.base-view-container {
+	padding: 20px;
+}
+
+.narrow-form {
+	width: 500px;
+}
+
+.normal-form {
+	width: 750px;
+}
