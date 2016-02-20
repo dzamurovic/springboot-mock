@@ -10,8 +10,19 @@
         </encoder>
     </appender>
 
+    <appender name="LOG_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${catalina.base}/logs/springbootmock.log</file>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <charset>UTF-8</charset>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%t] %p %c - %m [%class %M %L] %ex{full} %n</pattern>
+            </layout>
+        </encoder>
+    </appender>
+
     <root level="INFO">
         <appender-ref ref="STDOUT" level="INFO"/>
+        <appender-ref ref="LOG_FILE" level="DEBUG"/>
     </root>
 
 </configuration>
