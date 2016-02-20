@@ -27,4 +27,12 @@ Web app can be accesses on this URL: http://shrouded-cliffs-80167.herokuapp.com/
   ```
   
 4. Able to update a company
+
+  ```
+  curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"companyId":3,"name":"New company updated","address":"new address","city":"some sity","country":"some country","email":"email@newcompany.com","phone":"5134512341234","beneficialOwners":["Owner 1 new company","Owner 2 new company","Owner 3 new company"]}' https://shrouded-cliffs-80167.herokuapp.com/springbootmock/rest/companies
+  ```
 5. Able to add beneficial owner(s) of the company
+
+  ```
+  curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '["First new owner", "Second new owner"]' https://shrouded-cliffs-80167.herokuapp.com/springbootmock/rest/companies/3/owners
+  ```
