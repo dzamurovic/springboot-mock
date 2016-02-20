@@ -1,5 +1,4 @@
 import org.gradle.api.tasks.Copy
-import org.gradle.api.tasks.Delete
 
 buildscript {
     repositories {
@@ -47,20 +46,7 @@ task copyToLib(type: Copy) {
     from(configurations.compile)
 }
 
-task copyNodeModules(type: Copy) {
-    into "${project.projectDir}/src/main/webapp/node_modules"
-    from("node_modules")
-    outputs.upToDateWhen { false }
-}
-copyNodeModules.mustRunAfter(npmInstall)
-
-task deleteNodeModules(type: Delete) {
-    outputs.upToDateWhen { false }
-    delete "node_modules"
-}
-deleteNodeModules.mustRunAfter(copyNodeModules)
-
-task stage(type: Copy, dependsOn: [clean, build, npmInstall, copyNodeModules, deleteNodeModules, copyToLib]) {
+task stage(type: Copy, dependsOn: [clean, build, copyToLib]) {
     from jar.archivePath
     into project.rootDir
     rename {
