@@ -34,16 +34,19 @@ dependencies {
     testCompile "org.mockito:mockito-all:1.9.5"
 }
 
-task stage {
-    dependsOn build
+task stage(type: Copy, dependsOn: [clean, build, copyToLib]) {
+    from jar.archivePath
+    into project.rootDir
+    rename {
+        'app.jar'
+    }
 }
+stage.mustRunAfter(clean)
 
 task copyToLib(type: Copy) {
     into "$buildDir/lib"
     from(configurations.compile)
 }
-
-stage.dependsOn(copyToLib)
 
 war {
     manifest {
